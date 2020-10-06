@@ -7,13 +7,15 @@ import MainNavBar from './components/MainNavBar';
 
 function App() {
 
+  const [isLogedin, setIsLogedin] = useState(false);
 
-  const [isLogedin, setIsLogedin] = useState("false");
-
+  const changeLoginState = (boolVar) => {
+    setIsLogedin(boolVar);
+  }
 
   return (
       <div className="App">
-        {isLogedin ? <MainNavBar /> : <LoginNavBar setIsLogedin={this.setIsLogedin} />}
+        {isLogedin ? <MainNavBar setIsLogedin={changeLoginState}/> : <LoginNavBar setIsLogedin={changeLoginState} />}
       </div>
   );
 }

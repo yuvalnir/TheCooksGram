@@ -9,6 +9,12 @@ import Explore from "./Explore";
 import Login from "./Login";
 
 class MainNavBar extends Component {
+
+    /** change's the screen and navBar to login */
+    logoutHandler = (e) => {
+        this.props.setIsLogedin(false);
+    }
+
     render() {
         return (
             <Router>
@@ -28,7 +34,7 @@ class MainNavBar extends Component {
                                         <Link className="nav-link" to={"/explore"}>Explore</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/sign-up"}>Logout</Link>
+                                        <Link className="nav-link" onClick={(e) =>this.logoutHandler(e)} to={"/sign-in"}>Logout</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -42,7 +48,7 @@ class MainNavBar extends Component {
                             <Route path="/main" component={Main} />
                             <Route path="/profile" component={Profile} />
                             <Route path="/explore" component={Explore} />
-                            <Route path="/sign-in" component={Login} />
+                            <Route path="/sign-in" render={() => (<Login setIsLogedin={this.props.setIsLogedin} />)} />
                         </Switch>
                     </div>
                 </div>

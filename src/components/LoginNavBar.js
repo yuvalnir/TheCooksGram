@@ -31,9 +31,9 @@ class LoginNavBar extends Component {
                 <div className="auth-wrapper">
                     <div className="auth-inner">
                         <Switch>
-                            <Route exact path='/' render={(props) => (<Login setIsLogedin={props.setIsLogedin} />)} />
-                            <Route path="/sign-in" render={(props) => (<Login setIsLogedin={props.setIsLogedin} />)} />
-                            <Route path="/sign-up" render={(props) => (<SignUp setIsLogedin={props.setIsLogedin} />)} />
+                            <Route exact path='/' render={() => (<Login setIsLogedin={this.props.setIsLogedin} />)} />
+                            <Route path="/sign-in" render={() => (<Login setIsLogedin={this.props.setIsLogedin} />)} />
+                            <Route path="/sign-up" render={() => (<SignUp setIsLogedin={this.props.setIsLogedin} />)} />
                             <Route path="/main" component={Main} />
                         </Switch>
                     </div>

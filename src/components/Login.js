@@ -4,12 +4,15 @@ import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
 
+    /** handleSubmit - responsible for user authentication,
+    if user authenticated correctly it will change the browser address to /menu
+    and to change the navBar to the main screen navBar */
     handleSubmit = (e) => {
         e.preventDefault();
-        //this.props.history.push('/main');
+        this.props.history.push('/main');
 
         // if(userIsAuthenticated)
-         e.props.setIsLogedin('true');  //should chang the screen to the main screen
+        this.props.setIsLogedin(true);  //should chang the screen and navBar to the main screen
         // else show username or password are incorrect error massage
     }
 
