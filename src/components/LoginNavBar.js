@@ -4,14 +4,14 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "../components/Login";
 import SignUp from "../components/Signup";
-import Main from "../components/Main";
+import Home from "./Home";
 
 class LoginNavBar extends Component {
     render() {
         return (
             <Router>
                 <div className="LoginNavBar">
-                    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+                    <nav className="navbar navbar-expand-lg navbar-light">
                         <div className="container">
                             <Link className="navbar-brand" to={"/sign-in"}><h2>The Cook'sGram</h2></Link>
                             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -34,7 +34,7 @@ class LoginNavBar extends Component {
                             <Route exact path='/' render={() => (<Login setIsLogedin={this.props.setIsLogedin} />)} />
                             <Route path="/sign-in" render={() => (<Login setIsLogedin={this.props.setIsLogedin} />)} />
                             <Route path="/sign-up" render={() => (<SignUp setIsLogedin={this.props.setIsLogedin} />)} />
-                            <Route path="/main" component={Main} />
+                            <Route path="/main" component={Home} />
                         </Switch>
                     </div>
                 </div>

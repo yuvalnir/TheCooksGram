@@ -9,7 +9,7 @@ class Login extends Component {
     and to change the navBar to the main screen navBar */
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.history.push('/main');
+        this.props.history.push('/home');
 
         // if(userIsAuthenticated)
         this.props.setIsLogedin(true);  //should chang the screen and navBar to the main screen
