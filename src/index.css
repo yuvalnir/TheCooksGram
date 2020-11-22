@@ -23,7 +23,7 @@ body, html, .App, #root, .auth-wrapper {
   height: 100%;
 }
 
-/* Navigation bars and and page containers ---------------------------- */
+/* Navigation bars and page containers ---------------------------- */
 
 .navbar-light {
   background-color: #ffffff;
@@ -208,3 +208,10 @@ align-content: center;
   height: 100%;
   object-fit: fill;
 }
+
+/* Recipe page---------------------------- */
+
+.recipe-page {
+  display: grid;
+}
+

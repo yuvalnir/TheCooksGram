@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Image from 'react-bootstrap/Image';
+import RecipePage from "./RecipePage";
 
 class RecipeCard extends Component {
     render() {
         const { recipeName, image } = this.props;
         return (
-            <div className="card-container">
+            <div className="card-container" onClick={RecipePage}>
                 <div className="photo-container">
                     <Image src={image} />
                 </div>

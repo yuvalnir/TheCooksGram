@@ -11,6 +11,18 @@ class Login extends Component {
         e.preventDefault();
         this.props.history.push('/home');
 
+        const data = new FormData(e.target);
+        console.log("{email: " + data.get('email') + " password: " + data.get('password') + "}");
+
+        fetch('http://localhost:8081/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            email: data.get('email'),
+            password: data.get('password')
+          })
+        });
+
         // if(userIsAuthenticated)
         this.props.setIsLogedin(true);  //should chang the screen and navBar to the main screen
         // else show username or password are incorrect error massage
@@ -23,12 +35,12 @@ class Login extends Component {
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <input type="email" name="email" className="form-control" placeholder="Enter email" />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <input type="password" name="password" className="form-control" placeholder="Enter password" />
                 </div>
 
                 <div className="form-group">
