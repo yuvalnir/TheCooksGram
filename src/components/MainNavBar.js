@@ -6,6 +6,7 @@ import Home from "./Home";
 import Profile from "./Profile";
 import Explore from "./Explore";
 import Login from "./Login";
+import AddRecipe from "./AddRecipe";
 
 class MainNavBar extends Component {
 
@@ -28,6 +29,9 @@ class MainNavBar extends Component {
                                             <Link className="nav-link" to={"/home"}>Home</Link>
                                         </li>
                                         <li className="nav-item">
+                                            <Link className="nav-link" to={"/add-recipe"}>Add Recipe</Link>
+                                        </li>
+                                        <li className="nav-item">
                                             <Link className="nav-link" to={"/profile"}>Profile</Link>
                                         </li>
                                         <li className="nav-item">
@@ -46,6 +50,7 @@ class MainNavBar extends Component {
                         <div className="main-container">
                             <Switch>
                                 <Route path="/home" component={Home} />
+                                <Route path="/add-recipe" component={AddRecipe} />
                                 <Route path="/profile" component={Profile} />
                                 <Route path="/explore" component={Explore} />
                                 <Route path="/sign-in" render={() => (<Login setIsLogedin={this.props.setIsLogedin} />)} />

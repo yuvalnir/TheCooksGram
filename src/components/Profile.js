@@ -3,7 +3,7 @@ import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 
 import RecipeCard from "./RecipeCard";
-import ProfilePic from "../ProfilePic.jpg";
+import ProfilePic from "../temp-images/ProfilePic.jpg";
 
 
 class Profile extends Component {

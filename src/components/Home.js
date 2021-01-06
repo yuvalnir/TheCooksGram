@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
 
 import RecipeCard from "./RecipeCard";
-import babka from "../babka.jpg";
-import SmoresPie from "../Smores Pie.jpg";
-import lemonPie from "../lemonpei.jpg";
+import babka from "../temp-images/babka.jpg";
+import SmoresPie from "../temp-images/Smores Pie.jpg";
+import lemonPie from "../temp-images/lemonpei.jpg";
 
 class Home extends Component {
 
