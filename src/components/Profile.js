@@ -7,6 +7,30 @@ import ProfilePic from "../temp-images/ProfilePic.jpg";
 
 
 class Profile extends Component {
+
+  constructor(props) {
+    super()
+    this.state = {
+      recipes: [],
+    }
+  }
+
+  componentDidMount() {
+
+    fetch(`http://localhost:8081/recipeapi/userrecipes/${localStorage.getItem('userEmail')}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(response => {
+        if (response.status === 200)
+          response.json().then(jsonObj => {
+            this.setState({recipes: jsonObj.data});
+          });
+        else
+          alert("Recipe wasn't created, db error");
+      });
+  }
+
   render() {
     return (
       <div className="profile">
@@ -15,7 +39,7 @@ class Profile extends Component {
             <Image src={ProfilePic} roundedCircle />
           </div>
           <div className="profile-summary">
-            <h4>Profile Name</h4>
+            <h4>{localStorage.getItem('userFirstName')} {localStorage.getItem('userLastName')}</h4>
             <h5>Profile Description</h5>
           </div>
           <div className="profile-settings">
@@ -23,15 +47,9 @@ class Profile extends Component {
           </div>
         </div>
         <div className="profile-recipes-grid-container">
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
+          {this.state.recipes.map((recipe, index) => {
+            return <RecipeCard recipeName={recipe.title} />
+          })}
         </div>
       </div>
     );

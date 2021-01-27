@@ -14,6 +14,7 @@ class AddRecipe extends Component {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+            email: localStorage.getItem('userEmail'),
             title: data.get('recipe-title'),
             ingredients: data.get('recipe-ingredients'),
             instructions: data.get('recipe-instructions'),

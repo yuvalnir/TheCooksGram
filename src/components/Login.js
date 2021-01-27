@@ -14,18 +14,26 @@ class Login extends Component {
         const data = new FormData(e.target);
         console.log("{email: " + data.get('email') + " password: " + data.get('password') + "}");
 
-        // fetch('http://localhost:8081/', {
-        // method: 'POST',
-        // headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify({
-        //     email: data.get('email'),
-        //     password: data.get('password')
-        //   })
-        // });
+        fetch(`http://localhost:8081/userapi/user/${data.get('email')}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        }).then(response => {
+            console.log(response.status); //delete later
+            if(response.status === 200){
+                response.json().then(jsonObj => {
+                    localStorage.setItem('userEmail', jsonObj.data.email);
+                    localStorage.setItem('userFirstName', jsonObj.data.firstname);
+                    localStorage.setItem('userLastName', jsonObj.data.lastname);
+                    console.log(jsonObj); //delete later
+                });
+                this.props.setIsLogedin(true);
+            } else
+                alert("Email or password was entered incorrectly, db error");
+        });
 
-        // if(userIsAuthenticated)
-        this.props.setIsLogedin(true);  //should chang the screen and navBar to the main screen
-        // else show username or password are incorrect error massage
+        // if(response.status === 200) {
+        // this.props.setIsLogedin(true);  // changes the screen and navBar to the main screen
+        // }
     }
 
     render() {
