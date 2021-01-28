@@ -5,7 +5,10 @@ class AddRecipe extends Component {
 
     handleAddRecipe = (e) => {
         e.preventDefault();
-        this.props.history.push('/profile');
+        this.props.history.push({
+            pathname: '/profile',
+            state: { isUpdateNeeded: true }
+          })
 
         const data = new FormData(e.target);
         console.log("{title: " + data.get('recipe-title') + " ingredients: " + data.get('recipe-ingredients') + " instructions: " + data.get('recipe-instructions') + "}"); //test print

@@ -5,9 +5,9 @@ import RecipePage from "./RecipePage";
 
 class RecipeCard extends Component {
     render() {
-        const { recipeName, image } = this.props;
+        const { recipeName, recipeKey, image } = this.props;
         return (
-            <div className="card-container" onClick={RecipePage}>
+            <div className="card-container" key={recipeKey} onClick={RecipePage}>
                 <div className="photo-container">
                     <Image src={image} />
                 </div>
