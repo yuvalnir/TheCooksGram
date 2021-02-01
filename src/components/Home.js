@@ -23,16 +23,16 @@ class Home extends Component {
         <div className="title-div"> <h6>My favorite recipes</h6> </div>
         <div className="button-div"> <Button variant="light" onClick={() => this.clickLeft('myFavoriteRecipes')}>L</Button> </div>
         <div className="card-slide-container" id='myFavoriteRecipes'>
-          <RecipeCard recipeName='Smores Pie' image={SmoresPie} />
+          {/* <RecipeCard recipeName='Smores Pie' image={SmoresPie} />
           <RecipeCard recipeName='Babka' image={babka} />
-          <RecipeCard recipeName='פאי לימון' image={lemonPie} />
+          <RecipeCard recipeName='פאי לימון' image={lemonPie} /> */}
+          {/* <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
+          <RecipeCard recipeName='Recipe' /> */}
         </div>
         <div className="button-div"> <Button variant="light" onClick={() => this.clickRight('myFavoriteRecipes')}>R</Button> </div>
         {/* </div> */}
@@ -40,6 +40,7 @@ class Home extends Component {
         <div className="title-div"> <h6>New recipes</h6> </div>
         <div className="button-div"> <Button variant="light" onClick={() => this.clickLeft('new-recipies')}>L</Button> </div>
         <div className="card-slide-container" id='new-recipies'>
+          {/* <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
@@ -47,8 +48,7 @@ class Home extends Component {
           <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
           <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
+          <RecipeCard recipeName='Recipe' /> */}
         </div>
         <div className="button-div"> <Button variant="light" onClick={() => this.clickRight('new-recipies')}>R</Button> </div>
       </div>

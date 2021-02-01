@@ -2,20 +2,26 @@ import React, { Component } from "react"
 
 
 class RecipePage extends Component {
+
     render() {
+        const recipe  = this.props.location.state.recipe;
         return (
             <div className="recipe-page">
                 <div className="recipe-title">
-                    test title
+                <div className="add-recipe-title"> Title </div>
+                    <div className="text-container">{recipe.title}</div>
                 </div>
                 <div className="recipe-author">
-                    test author
+                <div className="add-recipe-title"> Author </div>
+                <div className="text-container"> test author</div>
                 </div>
                 <div className="recipe-ingredients">
-                    test ingredients
+                <div className="add-recipe-title"> Ingredients </div>
+                <div className="text-container">{recipe.ingredients}</div>
                 </div>
                 <div className="recipe-instructions">
-                    test instructions
+                <div className="add-recipe-title"> Instructions </div>
+                <div className="text-container">{recipe.instructions}</div>
                 </div>
             </div>
         );

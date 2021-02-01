@@ -5,33 +5,29 @@ class AddRecipe extends Component {
 
     handleAddRecipe = (e) => {
         e.preventDefault();
-        this.props.history.push({
-            pathname: '/profile',
-            state: { isUpdateNeeded: true }
-          })
+        this.props.history.push('/profile')
 
         const data = new FormData(e.target);
         console.log("{title: " + data.get('recipe-title') + " ingredients: " + data.get('recipe-ingredients') + " instructions: " + data.get('recipe-instructions') + "}"); //test print
 
         fetch('http://localhost:8081/recipeapi/recipe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            email: localStorage.getItem('userEmail'),
-            title: data.get('recipe-title'),
-            ingredients: data.get('recipe-ingredients'),
-            instructions: data.get('recipe-instructions'),
-          })
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: localStorage.getItem('userEmail'),
+                title: data.get('recipe-title'),
+                ingredients: data.get('recipe-ingredients'),
+                instructions: data.get('recipe-instructions'),
+            })
         })
-        .then(response => {
-            console.log(response); //delete later
-            console.log(response.body); //delete later
-            console.log(response.status); //delete later
-            if(response.status === 201)
-                alert("Recipe created successfully");
-            else
-                alert("Recipe wasn't created, db error");
-        });
+            .then(response => {
+                console.log(response); //delete later
+                console.log(response.body); //delete later
+                console.log(response.status); //delete later
+                if (response.status === 201)
+                    console.log("Recipe created successfully");
+            })
+            .catch(err => { console.log(err) })
     }
 
     render() {
@@ -53,7 +49,7 @@ class AddRecipe extends Component {
                     <div className="form-group">
                         <div className="add-recipe-title"> Instructions </div>
                         <textarea name="recipe-instructions" rows="8" className="add-recipe-instructions-input form-control " placeholder="Place instructions here" required />
-                        </div>
+                    </div>
 
 
                     <div className="form-group">

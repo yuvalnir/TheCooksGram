@@ -12,16 +12,10 @@ class Profile extends Component {
     super()
     this.state = {
       recipes: [],
-      isUpdateNeeded: false,
     }
   }
 
   componentDidMount() {
-    this.fetchRecipes();
-  }
-
-  componentDidUpdate(){
-    if(this.state.isUpdateNeeded === true)
     this.fetchRecipes();
   }
 
@@ -31,17 +25,14 @@ class Profile extends Component {
       headers: { 'Content-Type': 'application/json' },
     })
       .then(response => {
-        if (response.status === 200)
+        if (response.status === 200) {
           response.json().then(jsonObj => {
             this.setState({ recipes: jsonObj.data });
-            this.setState({ isUpdateNeeded: false });
           });
-        else
-          alert("Recipe wasn't created, db error");
-      });
+        }
+      })
+      .catch(err => { console.log(err) })
   }
-
-  // const isFocused = useIsFocused();
 
   render() {
     return (
@@ -60,7 +51,7 @@ class Profile extends Component {
         </div>
         <div className="profile-recipes-grid-container">
           {this.state.recipes.map((recipe, index) => {
-            return <RecipeCard recipeName={recipe.title} key={recipe._id} />
+            return <RecipeCard recipe={recipe} key={recipe._id} />
           })}
         </div>
       </div>

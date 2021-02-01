@@ -213,6 +213,19 @@ align-content: center;
 
 .recipe-page {
   display: grid;
+  row-gap: 10px;
+  align-items: center;
+  margin: auto;
+  padding: 2vw;
+  max-width: 400px;
+}
+
+.text-container{
+  background-color: white;
+}
+
+.recipe-page li {
+  list-style-type: disc;
 }
 
 /* Add Recipe page---------------------------- */
@@ -223,10 +236,7 @@ align-content: center;
   align-items: center;
   margin: auto;
   padding: 2vw;
-
   max-width: 400px;
-
-  /* justify-content: center; */
 }
 
 .add-page-title {
@@ -236,4 +246,6 @@ align-content: center;
 .add-recipe-instructions-input {
   height: auto;
 }
+
+
 

@@ -7,6 +7,7 @@ import Profile from "./Profile";
 import Explore from "./Explore";
 import Login from "./Login";
 import AddRecipe from "./AddRecipe";
+import RecipePage from "./RecipePage";
 
 class MainNavBar extends Component {
 
@@ -54,6 +55,7 @@ class MainNavBar extends Component {
                                 <Route path="/profile" component={Profile} />
                                 <Route path="/explore" component={Explore} />
                                 <Route path="/sign-in" render={() => (<Login setIsLogedin={this.props.setIsLogedin} />)} />
+                                <Route path="/recipe" component={RecipePage} />
                             </Switch>
                         </div>
                     </div>
