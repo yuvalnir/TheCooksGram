@@ -156,6 +156,7 @@ align-content: center;
 } 
 
 .card-slide-container {
+  display: flex;
   overflow: hidden;
   white-space: nowrap;
   margin-left: 10px;
@@ -222,10 +223,32 @@ align-content: center;
 
 .text-container{
   background-color: white;
+  white-space: pre-wrap;
+  padding: 5px;
+  border: 1px;
+  border-radius: 2px;
+  margin: 0;
 }
 
-.recipe-page li {
-  list-style-type: disc;
+.recipe-ingredients .ingredient-container{
+  background-color: white;
+  white-space: pre-wrap;
+  border: 1px;
+  border-radius: 2px;
+  margin: 0;
+}
+
+.recipe-page ul {
+  list-style-type: circle;
+}
+
+.edit-delete-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.edit-delete-btn .size-btn {
+  width: 70px;
 }
 
 /* Add Recipe page---------------------------- */
@@ -247,5 +270,23 @@ align-content: center;
   height: auto;
 }
 
+.input-box {
+  display: grid;
+  grid-template-columns: 42% 20% 25% 10%;
+  column-gap: 1%;
+}
+
+.ingredient-box {
+  display: grid;
+  row-gap: 10px;
+}
+
+.measure::-webkit-input-placeholder {
+  font-size: 90%;
+}
+
+.amount::-webkit-input-placeholder {
+  font-size: 75%;
+}
 
 

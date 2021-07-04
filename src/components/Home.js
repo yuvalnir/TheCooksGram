@@ -8,6 +8,32 @@ import lemonPie from "../temp-images/lemonpei.jpg";
 
 class Home extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      recipes: [],
+    }
+  }
+
+  componentDidMount() {
+    this.fetchRecipes();
+  }
+
+  fetchRecipes = () => {
+    fetch(`http://localhost:8081/recipeapi/userrecipes/${localStorage.getItem('userEmail')}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(response => {
+        if (response.status === 200) {
+          response.json().then(jsonObj => {
+            this.setState({ recipes: jsonObj.data });
+          });
+        }
+      })
+      .catch(err => { console.log(err) })
+  }
+
   clickLeft = (contianerName) => {
     document.getElementById(contianerName).scrollLeft -= 1400;
   }
@@ -23,16 +49,9 @@ class Home extends Component {
         <div className="title-div"> <h6>My favorite recipes</h6> </div>
         <div className="button-div"> <Button variant="light" onClick={() => this.clickLeft('myFavoriteRecipes')}>L</Button> </div>
         <div className="card-slide-container" id='myFavoriteRecipes'>
-          {/* <RecipeCard recipeName='Smores Pie' image={SmoresPie} />
-          <RecipeCard recipeName='Babka' image={babka} />
-          <RecipeCard recipeName='פאי לימון' image={lemonPie} /> */}
-          {/* <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' /> */}
+          {this.state.recipes.map((recipe, index) => {
+            return <RecipeCard recipe={recipe} key={recipe._id} />
+          })}
         </div>
         <div className="button-div"> <Button variant="light" onClick={() => this.clickRight('myFavoriteRecipes')}>R</Button> </div>
         {/* </div> */}
@@ -40,15 +59,9 @@ class Home extends Component {
         <div className="title-div"> <h6>New recipes</h6> </div>
         <div className="button-div"> <Button variant="light" onClick={() => this.clickLeft('new-recipies')}>L</Button> </div>
         <div className="card-slide-container" id='new-recipies'>
-          {/* <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' />
-          <RecipeCard recipeName='Recipe' /> */}
+          {this.state.recipes.map((recipe, index) => {
+            return <RecipeCard recipe={recipe} key={recipe._id} />
+          })}
         </div>
         <div className="button-div"> <Button variant="light" onClick={() => this.clickRight('new-recipies')}>R</Button> </div>
       </div>
