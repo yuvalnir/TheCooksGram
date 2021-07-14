@@ -253,13 +253,68 @@ align-content: center;
 
 /* Add Recipe page---------------------------- */
 
-.add-recipe-page {
+.add-recipe-page-form {
   display: grid;
-  row-gap: 10px;
-  align-items: center;
+  grid-template-columns: 33% 37% 30%;
+  grid-template-areas:
+    'header header header'
+    'title instructions photos'
+    'ingredient instructions photos'
+    'footer footer footer';
+  column-gap: 20px;
+  justify-content: space-evenly;
+  margin: 2vw;
+}
+
+.add-page-header {
+  grid-area: header;
+  text-align: center;
+}
+
+.add-page-footer {
+  grid-area: footer;
   margin: auto;
-  padding: 2vw;
-  max-width: 400px;
+}
+
+.title-form-group {
+  grid-area: title;
+  margin-left: 20px;
+}
+
+.ingredient-form-group {
+  grid-area: ingredient;
+  margin-left: 20px;
+}
+
+.instructions-form-group {
+  grid-area: instructions;
+}
+
+.photos-form-group {
+  grid-area: photos;
+  margin-right: 20px;
+}
+
+.photos-form-group button {
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.title-form-group .title-input {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.add-ingredient-btn {
+  margin: auto;
+}
+
+.btn-width {
+width: 200px !important;
+}
+
+.btn-top-margin {
+  margin-top: 20px;
 }
 
 .add-page-title {
@@ -270,10 +325,48 @@ align-content: center;
   height: auto;
 }
 
-.input-box {
+.photos-form-group img {
+  object-fit: cover;
+  border-radius: 10%;
+  padding: 5px;
+  width: 125px;
+  height: 125px;
+}
+
+.photos-container {
   display: grid;
-  grid-template-columns: 42% 20% 25% 10%;
+  grid-template-columns: auto auto auto;
+  
+}
+
+.close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  margin: 0 !important;
+  right: -110px;
+  top: -130px;
+  background-color: lightgray;
+}
+
+.ingredient-input-box {
+  display: grid;
+  grid-template-columns: 50% 15% 20% 7%;
   column-gap: 1%;
+}
+
+.ingredient-input-box button {
+  padding: 0;
+}
+
+.ingredient-btn {
+  margin: 20px auto auto auto;
 }
 
 .ingredient-box {
