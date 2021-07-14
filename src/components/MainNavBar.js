@@ -23,7 +23,7 @@ class MainNavBar extends Component {
                     <div className="main-navbar">
                         <nav className="navbar navbar-expand-lg navbar-light">
                             <div className="container">
-                                <Link className="navbar-brand" to={"/sign-in"}><h2>The Cook'sGram</h2></Link>
+                                <Link className="navbar-brand" to={"/home"}><h2>The Cook'sGram</h2></Link>
                                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                                     <ul className="navbar-nav ml-auto">
                                         <li className="nav-item">
