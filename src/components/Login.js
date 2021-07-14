@@ -9,8 +9,6 @@ class Login extends Component {
     and to change the navBar to the main screen navBar */
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.history.push('/home');
-
         const data = new FormData(e.target);
         console.log("{email: " + data.get('email') + " password: " + data.get('password') + "}");
 
@@ -26,6 +24,7 @@ class Login extends Component {
                     localStorage.setItem('userLastName', jsonObj.data.lastname);
                     console.log(jsonObj); //delete later
                 });
+                this.props.history.push('/home');
                 this.props.setIsLogedin(true);
             } else
                 alert("Email or password was entered incorrectly, db error");
