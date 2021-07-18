@@ -1,4 +1,7 @@
 import React, { Component } from "react"
+import Button from 'react-bootstrap/Button';
+
+import Babka from "../temp-images/babka.jpg";
 
 
 class RecipePage extends Component {
@@ -25,17 +28,16 @@ class RecipePage extends Component {
             <div className="recipe-page">
 
                 <div className="recipe-title">
-                    <div className="add-recipe-title"> Title </div>
-                    <div className="text-container">{recipe.title}</div>
+                    <h1>{recipe.title}</h1>
                 </div>
 
                 <div className="recipe-author">
-                    <div className="add-recipe-title"> Author </div>
+                    <div className="recipe-page-titles"> Author </div>
                     <div className="text-container">test author</div>
                 </div>
 
                 <div className="recipe-ingredients">
-                    <div className="add-recipe-title"> Ingredients </div>
+                    <div className="recipe-page-titles"> Ingredients </div>
                     <ul className="ingredient-container">
                         {recipe.ingredients.map((ingredient, index) => (
                             <li key={index}>{ingredient[0]} {ingredient[1]} {ingredient[2]}</li>
@@ -44,8 +46,27 @@ class RecipePage extends Component {
                 </div>
 
                 <div className="recipe-instructions">
-                    <div className="add-recipe-title"> Instructions </div>
+                    <div className="recipe-page-titles"> Instructions </div>
                     <div className="text-container">{recipe.instructions}</div>
+                </div>
+
+                <div className="recipe-photos">
+                    <div className="recipe-page-titles"> Photos </div>
+                    <div className="recipe-page-photo-container">
+                        <Button variant="light" >{'<'}</Button>
+                        <img src={Babka} />
+                        <Button variant="light" >{'>'}</Button>
+                    </div>
+                    <div className="recipe-page-photos-preview">
+                        <img src={Babka} />
+                        <img src={Babka} />
+                        <img src={Babka} />
+                        <img src={Babka} />
+                        <img src={Babka} />
+                        <img src={Babka} />
+                        <img src={Babka} />
+                        <img src={Babka} />
+                    </div>
                 </div>
 
                 <div className="edit-delete-btn">
