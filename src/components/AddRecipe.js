@@ -6,7 +6,7 @@ class AddRecipe extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            ingredients: [''],
+            ingredients: ['', '', ''],
             images: [],
             preview: []
         };
@@ -14,7 +14,6 @@ class AddRecipe extends Component {
 
     handleAddRecipe = (e) => {
         e.preventDefault();
-        this.props.history.push('/profile')
 
         const data = new FormData(e.target);
         console.log("{title: " + data.get('recipe-title') + " ingredients: " + data.get('recipe-ingredients') + " instructions: " + data.get('recipe-instructions') + "}"); //test print
@@ -32,18 +31,20 @@ class AddRecipe extends Component {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+                userId: localStorage.getItem('userId'),
                 email: localStorage.getItem('userEmail'),
                 title: data.get('recipe-title'),
                 ingredients: ingArr,
                 instructions: data.get('recipe-instructions'),
+                images: this.state.preview,
             })
         })
             .then(response => {
                 console.log(response); //delete later
-                console.log(response.body); //delete later
-                console.log(response.status); //delete later
-                if (response.status === 201)
+                if (response.status === 201) {
+                    this.props.history.push('/profile')
                     console.log("Recipe created successfully");
+                }
             })
             .catch(err => { console.log(err) })
     }
@@ -74,7 +75,7 @@ class AddRecipe extends Component {
                     reader.onloadend = () => {
                       this.setState({ preview: [...this.state.preview, reader.result]});
                     };
-                    reader.readAsDataURL(e.target.files[i]);
+                    reader.readAsDataURL(e.target.files[i]); //returns base64 encoded
                   }
               }
             } else {
@@ -139,7 +140,7 @@ class AddRecipe extends Component {
                         <div className="photos-container">
                             {this.state.preview ? 
                                 this.state.preview.map( (image, index) => (
-                                    <div>
+                                    <div key={index}>
                                         <img src={image} key={index} />
                                         <button className="close-btn" onClick={this.removePhoto(index)}>X</button>
                                     </div>
@@ -151,7 +152,7 @@ class AddRecipe extends Component {
                     </div>
 
 
-                    <button type="submit" className="btn-width btn-top-margin add-page-footer btn btn-light btn-block">Add Recipe</button>
+                    <button type="submit" className="btn-width add-page-footer btn btn-light btn-block">Add Recipe</button>
 
                     {/* <div className="add-recipe-title"> Add video (maybe in the future) </div> */}
                 </form>
