@@ -215,6 +215,7 @@ align-content: center;
 .recipe-page {
   display: grid;
   grid-template-columns: 33% 37% 30%;
+  grid-template-rows: auto 15% auto auto;
   grid-template-areas:
     'header header header'
     'author instructions photos'
@@ -272,6 +273,7 @@ align-content: center;
   border: 1px;
   border-radius: 5px;
   margin: 0;
+  box-shadow: 0 1px 5px 1px rgb(0 0 0 / 20%);
 }
 
 .recipe-ingredients .ingredient-container{
@@ -281,21 +283,14 @@ align-content: center;
   border: 1px;
   border-radius: 5px;
   margin: 0;
+  box-shadow: 0 1px 5px 1px rgb(0 0 0 / 20%);
 }
 
 .recipe-page-photo-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  justify-items: center;
+  /* justify-items: center; */
   align-items: center;
-}
-
-.recipe-page-photo-container img {
-  object-fit: cover;
-  border-radius: 10%;
-  padding: 5px;
-  width: 90%;
-  height: 90%;
 }
 
 .recipe-page-photo-container button {
@@ -303,13 +298,32 @@ align-content: center;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  margin-left: 5px;
+  margin-right: 5px;
   height: 25px;
   width: 25px;
+  
+}
+
+.inner-photo-container {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.inner-photo-container img {
+  object-fit: cover;
+  border-radius: 10%;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  min-width: 350px;
+  min-height: 350px;
 }
 
 .recipe-page-photos-preview {
   display: flex;
-  justify-content: space-evenly;
   overflow: hidden;
   white-space: nowrap;
   margin-left: 10px;
@@ -331,7 +345,7 @@ align-content: center;
 }
 
 .img-on-select {
-  opacity: 1;
+  opacity: 1 !important;
   border: 2px solid steelblue;
 
 }
