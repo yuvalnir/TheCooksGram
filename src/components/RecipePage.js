@@ -1,10 +1,15 @@
 import React, { Component } from "react"
 import Button from 'react-bootstrap/Button';
 
-import Babka from "../temp-images/babka.jpg";
-
-
 class RecipePage extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+            previewIndex: 0,
+            numOfImages: this.props.location.state.images.length
+        };
+    }
 
     deleteRecipe = (e) => {
         e.preventDefault();
@@ -22,8 +27,20 @@ class RecipePage extends Component {
         e.preventDefault();
     }
 
+    clickLeft = (containerName) => {
+        document.getElementById(containerName).scrollLeft -= 350;
+        if(this.state.previewIndex > 0)
+        this.setState({previewIndex: this.state.previewIndex - 1})
+    }
+    
+    clickRight = (containerName) => {
+        document.getElementById(containerName).scrollLeft += 350;
+        if(this.state.previewIndex < this.state.numOfImages - 1)
+                this.setState({previewIndex: this.state.previewIndex + 1})
+    }
+
     render() {
-        const recipe = this.props.location.state.recipe;
+        const { recipe, images } = this.props.location.state;
         return (
             <div className="recipe-page">
 
@@ -53,19 +70,28 @@ class RecipePage extends Component {
                 <div className="recipe-photos">
                     <div className="recipe-page-titles"> Photos </div>
                     <div className="recipe-page-photo-container">
-                        <Button variant="light" >{'<'}</Button>
-                        <img src={Babka} />
-                        <Button variant="light" >{'>'}</Button>
+                        <Button variant="light" onClick={() => this.clickLeft('photoContainer')}>{'<'}</Button>
+                        <div className="inner-photo-container" id='photoContainer'>
+                        {images ? 
+                            images.map((image, index) => (
+                                <div key={index}>
+                                    <img src={image} key={index} alt=''/>
+                                </div>
+                            ))
+                            : ''
+                        }
+                        </div>
+                        <Button variant="light" onClick={() => this.clickRight('photoContainer')}>{'>'}</Button>
                     </div>
                     <div className="recipe-page-photos-preview">
-                        <img src={Babka} />
-                        <img src={Babka} />
-                        <img src={Babka} />
-                        <img src={Babka} />
-                        <img src={Babka} />
-                        <img src={Babka} />
-                        <img src={Babka} />
-                        <img src={Babka} />
+                        {images ? 
+                            images.map((image, index) => (
+                                <div key={index}>
+                                    <img className={(this.state.previewIndex === index ? 'img-on-select' : '')} src={image} key={index} alt='' />
+                                </div>
+                            ))
+                            : ''
+                        }
                     </div>
                 </div>
 
