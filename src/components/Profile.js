@@ -12,6 +12,7 @@ class Profile extends Component {
     super()
     this.state = {
       recipes: [],
+      imagesArr: [],
     }
   }
 
@@ -20,14 +21,15 @@ class Profile extends Component {
   }
 
   fetchRecipes = () => {
-    fetch(`http://localhost:8081/recipeapi/userrecipes/${localStorage.getItem('userEmail')}`, {
+    fetch(`http://localhost:8081/recipeapi/userrecipes/${localStorage.getItem('userId')}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
       .then(response => {
         if (response.status === 200) {
           response.json().then(jsonObj => {
-            this.setState({ recipes: jsonObj.data });
+            this.setState({ recipes: jsonObj.data.recipes });
+            this.setState({ imagesArr: jsonObj.data.imagesArr });
           });
         }
       })
@@ -51,7 +53,7 @@ class Profile extends Component {
         </div>
         <div className="profile-recipes-grid-container">
           {this.state.recipes.map((recipe, index) => {
-            return <RecipeCard recipe={recipe} key={recipe._id} />
+            return <RecipeCard recipe={recipe} images={this.state.imagesArr[index]} key={recipe._id} />
           })}
         </div>
       </div>
