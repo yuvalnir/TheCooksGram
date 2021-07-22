@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Image from 'react-bootstrap/Image';
-import { BrowserRouter as Link } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 
 class RecipeCard extends Component {
@@ -10,16 +9,18 @@ class RecipeCard extends Component {
         e.preventDefault();
         this.props.history.push({
             pathname: '/recipe', 
-            state: { recipe: this.props.recipe }});
-
+            state: { 
+                recipe: this.props.recipe,
+                images: this.props.images
+             }});
     }
 
     render() {
-        const { recipe, recipeKey, image } = this.props;
+        const { recipe, recipeKey, images } = this.props;
         return (
             <div className="card-container" key={recipeKey} onClick={(e) => this.toRecipePage(e)}>
                 <div className="photo-container">
-                    <Image src={image} />
+                    <Image src={images ? images[0] : '' } />
                 </div>
                 <div className="title-container">
                     <h4>{recipe.title}</h4>
