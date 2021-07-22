@@ -141,7 +141,7 @@ class AddRecipe extends Component {
                             {this.state.preview ? 
                                 this.state.preview.map( (image, index) => (
                                     <div key={index}>
-                                        <img src={image} key={index} />
+                                        <img src={image} key={index} alt=''/>
                                         <button className="close-btn" onClick={this.removePhoto(index)}>X</button>
                                     </div>
                                 ))
